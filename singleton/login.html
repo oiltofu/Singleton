@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .layer {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: #000;
+            opacity: 0.6;
+            color: #fff;
+            text-align: center;
+            font-size: 30px;
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button id="loginBtn">登录</button>
+    <script>
+        var  createLoginLayer = (function() {
+            var div;
+            return function() {
+                if(!div) {
+                    div = document.createElement("div");
+                    div.innerHTML = "我是登录浮窗";
+                    div.style.display = "none";
+                    document.body.appendChild(div);
+                    div.className = "layer";
+                }
+                return div;
+            }
+            // var oDiv = document.createElement("div");
+            // oDiv.className = "layer";
+            // oDiv.innerHTML = "我是登录浮窗";
+            // oDiv.style.display = "none";
+            // document.body.appendChild(oDiv);
+            // return oDiv;
+        })();
+        document.getElementById("loginBtn").onclick = function() {
+            var loginLayer = createLoginLayer();
+            loginLayer.style.display = "block";
+        }
+    </script>
+</body>
+</html>
